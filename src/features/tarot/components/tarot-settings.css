@@ -1,0 +1,480 @@
+.tarot-settings {
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  background: transparent;
+}
+.tarot-settings {
+  width: min(760px, calc(100vw - 28px));
+  max-width: none;
+  max-height: calc(100dvh - 28px);
+  overflow: visible;
+}
+.tarot-settings::backdrop {
+  background: rgb(27 22 33 / 62%);
+  backdrop-filter: blur(4px);
+}
+.tarot-settings:focus {
+  outline: none;
+}
+.tarot-settings-panel {
+  max-height: calc(100dvh - 28px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 20px;
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 24px 80px rgb(20 14 27 / 34%);
+  overflow: hidden;
+}
+.tarot-settings-panel > header,
+.tarot-settings-panel > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  background: rgb(255 255 255 / 76%);
+  backdrop-filter: blur(12px);
+  z-index: 2;
+}
+.tarot-settings-panel > header {
+  border-bottom: 1px solid var(--line);
+}
+.tarot-settings-panel > footer {
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+}
+.tarot-settings-panel .eyebrow {
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: 2.5px;
+}
+.tarot-settings-panel h2 {
+  margin-top: 7px;
+  font: 400 24px var(--serif);
+  letter-spacing: 3px;
+}
+.settings-close {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--purple);
+  background: white;
+  cursor: pointer;
+}
+.settings-close svg {
+  width: 17px;
+}
+.settings-body {
+  padding: 0 28px 30px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.setting-section {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+.setting-section:last-child {
+  border-bottom: 0;
+}
+.setting-heading {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.setting-heading > span {
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding-top: 3px;
+}
+.setting-heading h3 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+.setting-heading p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+.setting-options,
+.spread-options {
+  gap: 10px;
+}
+.setting-options {
+  display: grid;
+}
+.two-options {
+  grid-template-columns: repeat(2, 1fr);
+}
+.setting-options label {
+  position: relative;
+}
+.setting-options input,
+.spread-options input,
+.skin-options input,
+.cloth-options input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.setting-options label > span {
+  min-height: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.setting-options input:checked + span {
+  border-color: var(--purple);
+  background: var(--lavender);
+  box-shadow: inset 0 0 0 1px var(--purple);
+}
+.setting-options b,
+.spread-caption b,
+.skin-options b {
+  font-size: 12px;
+  font-weight: 500;
+}
+.setting-options small,
+.spread-caption small,
+.skin-options small {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 9px;
+}
+.spread-options {
+  display: flex;
+  gap: 14px;
+  padding: 2px 2px 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.spread-options::-webkit-scrollbar {
+  display: none;
+}
+.spread-options label {
+  position: relative;
+  flex: 0 0 128px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  text-align: center;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+.spread-preview {
+  position: relative;
+  height: 138px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--purple);
+  background: #faf8fb;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+.spread-options input:checked + .spread-preview {
+  border-color: var(--purple);
+  background: var(--lavender);
+  box-shadow: inset 0 0 0 1px var(--purple);
+}
+.spread-glyph {
+  min-width: 64px;
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.spread-glyph i {
+  width: 23px;
+  height: 40px;
+  display: block;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 68%);
+  box-shadow: 0 4px 10px rgb(48 35 57 / 8%);
+}
+.spread-preview--triple .spread-glyph {
+  gap: 3px;
+}
+.spread-preview--free .spread-glyph {
+  position: relative;
+  width: 70px;
+}
+.spread-preview--free .spread-glyph i {
+  position: absolute;
+}
+.spread-preview--free .spread-glyph i:nth-child(1) {
+  transform: translateX(-16px) rotate(-14deg);
+}
+.spread-preview--free .spread-glyph i:nth-child(2) {
+  transform: translateX(-8px) rotate(-7deg);
+}
+.spread-preview--free .spread-glyph i:nth-child(3) {
+  transform: translateX(0);
+}
+.spread-preview--free .spread-glyph i:nth-child(4) {
+  transform: translateX(8px) rotate(7deg);
+}
+.spread-preview--free .spread-glyph i:nth-child(5) {
+  transform: translateX(16px) rotate(14deg);
+}
+.spread-options input:focus-visible + .spread-preview {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
+.spread-preview em {
+  position: absolute;
+  right: 10px;
+  bottom: 9px;
+  color: var(--muted);
+  font-size: 8px;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+.spread-caption {
+  display: grid;
+  justify-items: center;
+  gap: 1px;
+  min-height: 42px;
+}
+.spread-caption small {
+  line-height: 1.5;
+}
+.skin-options {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+.skin-options::-webkit-scrollbar {
+  display: none;
+}
+.skin-options label,
+.skin-coming {
+  width: 116px;
+  display: grid;
+  gap: 7px;
+  text-align: center;
+}
+.skin-options label {
+  cursor: pointer;
+  flex: 0 0 116px;
+  scroll-snap-align: start;
+}
+.skin-preview,
+.skin-coming > span {
+  height: 132px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--lavender);
+  overflow: hidden;
+}
+.skin-options input:checked + .skin-preview {
+  border-color: var(--purple);
+  background: var(--lavender);
+  box-shadow: inset 0 0 0 1px var(--purple);
+}
+.skin-options input:focus-visible + .skin-preview {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
+.skin-preview img {
+  width: 64px;
+  border: 3px solid #f4eede;
+  border-radius: 4px;
+  box-shadow: var(--face-shadow);
+}
+.skin-coming {
+  opacity: 0.55;
+}
+.skin-coming > span {
+  border-color: var(--line);
+  color: var(--gold);
+  font-size: 24px;
+}
+.cloth-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.cloth-options label {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+.cloth-options label > span {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background-color: var(--cloth);
+  background-image: var(--cloth-pattern, none);
+  background-size: 92px 92px;
+}
+.cloth-options input:checked + span {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--purple);
+}
+.cloth-options small {
+  color: var(--muted);
+  font-size: 8px;
+}
+.setting-section textarea,
+.position-setting input,
+.position-stepper {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--ink);
+  background: white;
+  font: 12px/1.7 var(--sans);
+}
+.setting-section textarea {
+  resize: vertical;
+  min-height: 72px;
+  padding: 12px 14px;
+}
+.position-count {
+  width: min(100%, 310px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 18px 0 20px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.position-count[hidden] {
+  display: none;
+}
+.position-stepper {
+  width: 190px;
+  height: 52px;
+  display: grid;
+  grid-template-columns: 52px 1fr 52px;
+  overflow: hidden;
+}
+.position-stepper button {
+  min-width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--purple);
+  background: var(--lavender);
+  font-size: 22px;
+  line-height: 1;
+}
+.position-stepper button:hover:not(:disabled) {
+  background: #ece5f0;
+}
+.position-stepper button:disabled {
+  color: var(--muted);
+  background: #f7f5f8;
+  opacity: 0.55;
+}
+.position-stepper output {
+  display: grid;
+  place-items: center;
+  border-inline: 1px solid var(--line);
+  color: var(--ink);
+  background: white;
+  font: 18px var(--serif);
+  text-align: center;
+}
+.position-settings {
+  display: grid;
+  gap: 9px;
+  margin-top: 16px;
+}
+.position-setting {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.position-setting > span:first-child {
+  color: var(--gold);
+  font: 16px var(--serif);
+}
+.position-setting > span:last-child {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  align-items: center;
+  gap: 9px;
+}
+.position-setting b {
+  font-size: 9px;
+  font-weight: 500;
+}
+.position-setting input {
+  padding: 9px 11px;
+}
+.setting-empty {
+  color: var(--muted);
+  font-size: 10px;
+}
+@media (max-width: 600px) {
+  .tarot-settings {
+    width: calc(100vw - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+  .tarot-settings-panel {
+    max-height: calc(100dvh - 16px);
+    border-radius: 16px;
+  }
+  .tarot-settings-panel > header,
+  .tarot-settings-panel > footer {
+    padding: 18px;
+  }
+  .settings-body {
+    padding: 0 18px 24px;
+  }
+  .setting-section {
+    padding: 24px 0;
+  }
+  .spread-options {
+    margin-right: -18px;
+    padding-right: 18px;
+  }
+  .spread-options label {
+    flex-basis: 122px;
+  }
+  .spread-preview {
+    height: 132px;
+  }
+  .position-count {
+    width: 100%;
+  }
+  .position-stepper {
+    width: 196px;
+    height: 56px;
+    grid-template-columns: 56px 1fr 56px;
+  }
+  .position-setting > span:last-child {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}

@@ -1,0 +1,27 @@
+# Generated output and dependencies
+/dist/
+/node_modules/
+/public/precache.json
+/public/sw.js
+/coverage/
+
+# Local previews, browser QA, and reference captures
+/output/
+/.playwright-cli/
+/.sites-runtime/
+/1.png
+
+# Local environment and credentials (examples may be committed)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editor, OS, and runtime files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+*.tsbuildinfo

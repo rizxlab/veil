@@ -1,0 +1,17 @@
+.shuffle-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+.shuffle-card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid var(--card-edge);
+  border-radius: 5px;
+  background: url("/assets/tarot/back.svg") center / 100% 100%;
+  box-shadow: var(--card-shadow);
+  transform-origin: center;
+  will-change: transform;
+}

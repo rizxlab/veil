@@ -1,0 +1,153 @@
+.drawn-card {
+  margin: 0;
+  flex: 0 0 137px;
+  scroll-snap-align: center;
+  text-align: center;
+  perspective: 1000px;
+}
+.drawn-card[data-card-id] {
+  cursor: pointer;
+  border-radius: 8px;
+}
+.drawn-card[data-card-id]:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 5px;
+}
+.drawn-card[data-card-id]:hover .card-front {
+  box-shadow: 0 7px 20px #46344e35;
+}
+.drawn-card.is-landing {
+  pointer-events: none;
+}
+.card-flip {
+  position: relative;
+  width: 137px;
+  height: 229px;
+  transform-style: preserve-3d;
+}
+.card-front {
+  height: 100%;
+  border-radius: 7px;
+  background: #f8f1dd;
+  overflow: hidden;
+  box-shadow: var(--face-shadow);
+  border: 4px solid #f4eede;
+  backface-visibility: hidden;
+}
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.card-front img.reversed {
+  transform: rotate(180deg);
+}
+.card-reveal-back {
+  position: absolute;
+  inset: 0;
+  background: url("/assets/tarot/back.svg") center/100% 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 7px;
+}
+.newly-drawn .card-flip {
+  animation: reveal-card 0.85s var(--ease) both;
+}
+.drawn-card figcaption {
+  margin-top: 16px;
+  text-align: left;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.card-position {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  color: var(--gold);
+  font-size: 8px;
+  line-height: 1.5;
+  white-space: normal;
+}
+.draw-number {
+  font-size: 9px;
+  color: var(--muted);
+  margin-right: 6px;
+}
+.drawn-card strong {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.orientation {
+  display: inline-block;
+  font-size: 8px;
+  color: var(--sage);
+  background: var(--sage-soft);
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: 2px;
+}
+.orientation.is-reversed {
+  color: var(--purple);
+  background: var(--lavender);
+}
+.drawn-card figcaption > small {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  margin: 6px 0 0 19px;
+}
+.face-fallback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  color: var(--purple);
+  font-size: 16px;
+}
+.face-fallback[hidden] {
+  display: none;
+}
+.face-fallback small {
+  font-size: 10px;
+  margin-top: 15px;
+}
+@keyframes reveal-card {
+  from {
+    transform: rotateY(180deg) translateY(-12px);
+  }
+  to {
+    transform: rotateY(0) translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .drawn-card {
+    flex-basis: 108px;
+  }
+  .card-flip {
+    width: 108px;
+    height: 180px;
+  }
+  .drawn-card figcaption {
+    margin-top: 11px;
+  }
+  .drawn-card strong {
+    font-size: 11px;
+  }
+  .drawn-card figcaption > small {
+    font-size: 8px;
+    margin-left: 0;
+  }
+  .draw-number {
+    font-size: 8px;
+    margin-right: 4px;
+  }
+  .orientation {
+    font-size: 8px;
+    margin-left: 4px;
+    padding: 1px 3px;
+  }
+}

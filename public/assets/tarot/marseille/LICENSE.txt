@@ -1,0 +1,5 @@
+CC0 1.0 Universal
+
+The source artwork and repository contributions are dedicated to the public domain under CC0 1.0.
+Source: https://github.com/SONDLecT/woodcut-tarot
+License: https://creativecommons.org/publicdomain/zero/1.0/

@@ -1,0 +1,113 @@
+.dice-settings {
+  width: min(680px, calc(100vw - 28px));
+  max-width: none;
+  max-height: calc(100dvh - 28px);
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  background: transparent;
+}
+.dice-settings::backdrop {
+  background: rgb(27 22 33 / 62%);
+  backdrop-filter: blur(4px);
+}
+.dice-settings:focus { outline: none; }
+.dice-settings-panel {
+  max-height: calc(100dvh - 28px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 20px;
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 24px 80px rgb(20 14 27 / 34%);
+  overflow: hidden;
+}
+.dice-settings-panel > header,
+.dice-settings-panel > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  background: rgb(255 255 255 / 76%);
+  backdrop-filter: blur(12px);
+}
+.dice-settings-panel > header { border-bottom: 1px solid var(--line); }
+.dice-settings-panel > footer {
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+}
+.dice-settings-panel h2 {
+  margin-top: 7px;
+  font: 400 24px var(--serif);
+  letter-spacing: 3px;
+}
+.dice-settings-close {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--purple);
+  background: white;
+}
+.dice-settings-close svg { width: 17px; }
+.dice-settings-body {
+  padding: 0 28px 30px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.dice-setting-section {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+.dice-setting-section:last-child { border-bottom: 0; }
+.dice-setting-heading {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.dice-setting-heading > span {
+  padding-top: 3px;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.dice-setting-heading h3 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+.dice-setting-heading p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+.dice-setting-section textarea {
+  width: 100%;
+  min-height: 72px;
+  padding: 12px 14px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--ink);
+  background: white;
+  font: 12px/1.7 var(--sans);
+}
+@media (max-width: 600px) {
+  .dice-settings {
+    width: calc(100vw - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+  .dice-settings-panel {
+    max-height: calc(100dvh - 16px);
+    border-radius: 16px;
+  }
+  .dice-settings-panel > header,
+  .dice-settings-panel > footer { padding: 18px; }
+  .dice-settings-body { padding: 0 18px 24px; }
+  .dice-setting-section { padding: 24px 0; }
+}

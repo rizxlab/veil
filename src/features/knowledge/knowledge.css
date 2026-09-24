@@ -1,0 +1,169 @@
+.knowledge-page {
+  width: min(1120px, calc(100% - 48px));
+  min-height: calc(100vh - 170px);
+  margin: 0 auto;
+  padding: 58px 0 90px;
+}
+.knowledge-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.knowledge-breadcrumb a:hover {
+  color: var(--purple);
+}
+.knowledge-heading {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 42px;
+}
+.knowledge-heading-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--purple);
+  background: var(--lavender);
+}
+.knowledge-heading-icon svg {
+  width: 28px;
+  height: 28px;
+}
+.knowledge-heading h1 {
+  margin-top: 10px;
+  font: 400 34px var(--serif);
+  letter-spacing: 4px;
+}
+.knowledge-heading p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.knowledge-sections {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 48px;
+}
+.knowledge-card {
+  min-height: 330px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgb(255 255 255 / 72%);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+.knowledge-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--purple) 45%, var(--line));
+  box-shadow: 0 18px 50px rgb(45 34 55 / 8%);
+}
+.knowledge-card-index {
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.knowledge-card-mark {
+  height: 116px;
+  display: grid;
+  place-items: center;
+  color: color-mix(in srgb, var(--purple) 62%, white);
+  font: 34px var(--serif);
+}
+.knowledge-card h2 {
+  margin-top: 10px;
+  font: 400 24px var(--serif);
+  letter-spacing: 2px;
+}
+.knowledge-card p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+.knowledge-card-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--purple);
+  font-size: 10px;
+}
+.knowledge-card-action svg {
+  width: 15px;
+}
+.knowledge-empty {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  margin-top: 48px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  text-align: center;
+  background: rgb(255 255 255 / 64%);
+}
+.knowledge-empty > svg {
+  color: var(--gold);
+}
+.knowledge-empty h2 {
+  font: 400 22px var(--serif);
+  letter-spacing: 2px;
+}
+.knowledge-empty p {
+  color: var(--muted);
+  font-size: 10px;
+}
+.knowledge-empty .button {
+  margin-top: 8px;
+}
+@media (max-width: 700px) {
+  .knowledge-page {
+    width: auto;
+    padding: 34px 22px 56px;
+  }
+  .knowledge-heading {
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 30px;
+  }
+  .knowledge-heading-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+  .knowledge-heading h1 {
+    font-size: 28px;
+  }
+  .knowledge-sections {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 34px;
+  }
+  .knowledge-card {
+    min-height: 220px;
+    padding: 22px;
+  }
+  .knowledge-card-mark {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    height: auto;
+    font-size: 26px;
+  }
+  .knowledge-card .eyebrow {
+    margin-top: 34px;
+  }
+}

@@ -1,0 +1,49 @@
+.tarot-prompt {
+  width: min(420px, calc(100vw - 36px));
+  max-width: none;
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  background: transparent;
+}
+.tarot-prompt::backdrop {
+  background: rgb(27 22 33 / 62%);
+  backdrop-filter: blur(4px);
+}
+.tarot-prompt:focus {
+  outline: none;
+}
+.tarot-prompt-panel {
+  padding: 36px;
+  border: 1px solid rgb(255 255 255 / 76%);
+  border-radius: 18px;
+  text-align: center;
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 24px 70px rgb(20 14 27 / 32%);
+}
+.tarot-prompt-mark {
+  color: var(--gold);
+  font-size: 24px;
+}
+.tarot-prompt h2 {
+  margin-top: 16px;
+  font: 400 22px var(--serif);
+  letter-spacing: 2px;
+}
+.tarot-prompt p {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+}
+.tarot-prompt form > div {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 24px;
+}
+.button.is-danger {
+  border-color: #793743;
+  color: white;
+  background: #793743;
+}

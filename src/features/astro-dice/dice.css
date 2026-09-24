@@ -1,0 +1,292 @@
+#app[data-page="astro-dice"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  min-height: 100dvh;
+}
+#app[data-page="astro-dice"] .site-header {
+  flex: none;
+  width: 100%;
+  height: calc(72px + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) 24px 0;
+}
+#app[data-page="astro-dice"] .site-footer {
+  display: none;
+}
+.dice-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  min-height: 0;
+}
+.dice-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 24px;
+}
+.dice-title-row {
+  min-width: 0;
+  width: min(68%, 430px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dice-title-row h1 {
+  min-width: 0;
+  color: var(--ink);
+  font: 400 16px var(--serif);
+  letter-spacing: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dice-title-settings {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--purple);
+  background: rgb(255 255 255 / 72%);
+}
+.dice-title-settings svg { width: 17px; }
+.dice-page-label {
+  font: 12px var(--sans);
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+.dice-table {
+  flex: 1;
+  min-height: 270px;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+.dice-arrangement {
+  position: relative;
+  width: min(100%, 430px);
+  height: 300px;
+}
+.die-position {
+  position: absolute;
+  width: clamp(100px, 29vw, 138px);
+  text-align: center;
+}
+.die-planet {
+  left: 13%;
+  top: 20px;
+  transform: rotate(-12deg);
+}
+.die-sign {
+  right: 12%;
+  top: 53px;
+  transform: rotate(14deg);
+}
+.die-house {
+  left: 34%;
+  top: 155px;
+  transform: rotate(-5deg);
+}
+.astro-die {
+  position: relative;
+  aspect-ratio: 160/172;
+  filter: drop-shadow(3px 12px 7px #362d3526);
+  will-change: transform;
+}
+.astro-die img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.die-symbol {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font:
+    36px Georgia,
+    "Times New Roman",
+    serif;
+  color: #f6e4c5;
+  text-shadow: 0 1px 1px #261b3540;
+}
+.die-house .die-symbol {
+  font-size: 30px;
+}
+.die-caption {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+.dice-result {
+  text-align: center;
+  padding: 18px 16px 24px;
+  min-height: 98px;
+}
+#dice-result-heading {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+#dice-result-values {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  font: 21px var(--serif);
+  min-height: 30px;
+}
+#dice-result-values > span + span::before {
+  content: "·";
+  margin: 0 14px;
+  color: var(--gold);
+}
+#dice-result-values .dice-invitation {
+  font: 13px var(--sans);
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+.dice-controls {
+  padding: 10px 24px max(22px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+#dice-status {
+  font-size: 11px;
+  color: var(--muted);
+  min-height: 16px;
+}
+#roll-dice {
+  min-height: 50px;
+  width: min(100%, 300px);
+  justify-content: center;
+  gap: 12px;
+  border-radius: 7px;
+}
+.is-rolling .die-symbol {
+  visibility: hidden;
+}
+.is-rolling .die-caption,
+.is-rolling .dice-result {
+  opacity: 0.35;
+}
+.dice-history-result {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  padding: 24px 12px 30px;
+  text-align: center;
+}
+.dice-history-result div {
+  display: grid;
+  gap: 7px;
+}
+.dice-history-result b {
+  font:
+    30px Georgia,
+    serif;
+  color: var(--purple);
+}
+.dice-history-result small {
+  color: var(--muted);
+  font-size: 10px;
+}
+@media (min-width: 700px) {
+  #app[data-page="astro-dice"] .site-header {
+    height: 90px;
+    padding-left: 6.3%;
+    padding-right: 6.3%;
+  }
+  .dice-navigation {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .dice-title-row h1 {
+    font-size: 18px;
+  }
+  .dice-arrangement {
+    width: 550px;
+    max-width: none;
+    height: 340px;
+  }
+  .die-position {
+    width: 160px;
+  }
+  .die-planet {
+    left: 12%;
+    top: 20px;
+  }
+  .die-sign {
+    right: 12%;
+    top: 45px;
+  }
+  .die-house {
+    left: 35%;
+    top: 170px;
+  }
+  .die-symbol {
+    font-size: 43px;
+  }
+  .die-house .die-symbol {
+    font-size: 35px;
+  }
+  .dice-controls {
+    padding-bottom: 30px;
+  }
+}
+@media (max-height: 680px) {
+  .dice-table {
+    min-height: 215px;
+  }
+  .dice-arrangement {
+    height: 215px;
+    width: 310px;
+  }
+  .die-position {
+    width: 88px;
+  }
+  .die-planet {
+    top: 5px;
+    left: 16%;
+  }
+  .die-sign {
+    top: 20px;
+    right: 12%;
+  }
+  .die-house {
+    top: 95px;
+    left: 35%;
+  }
+  .die-symbol {
+    font-size: 29px;
+  }
+  .die-house .die-symbol {
+    font-size: 25px;
+  }
+  .dice-result {
+    padding: 10px 12px;
+    min-height: 74px;
+  }
+  .dice-controls {
+    gap: 9px;
+    padding-top: 6px;
+  }
+  #dice-result-values {
+    font-size: 18px;
+  }
+  #dice-result-values > span + span::before {
+    margin: 0 10px;
+  }
+}

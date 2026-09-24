@@ -1,0 +1,110 @@
+const majorNames = [
+  "愚人",
+  "魔术师",
+  "女祭司",
+  "皇后",
+  "皇帝",
+  "教皇",
+  "恋人",
+  "战车",
+  "力量",
+  "隐者",
+  "命运之轮",
+  "正义",
+  "倒吊人",
+  "死神",
+  "节制",
+  "恶魔",
+  "高塔",
+  "星星",
+  "月亮",
+  "太阳",
+  "审判",
+  "世界",
+];
+const majorEnglish = [
+  "The Fool",
+  "The Magician",
+  "The High Priestess",
+  "The Empress",
+  "The Emperor",
+  "The Hierophant",
+  "The Lovers",
+  "The Chariot",
+  "Strength",
+  "The Hermit",
+  "Wheel of Fortune",
+  "Justice",
+  "The Hanged Man",
+  "Death",
+  "Temperance",
+  "The Devil",
+  "The Tower",
+  "The Star",
+  "The Moon",
+  "The Sun",
+  "Judgement",
+  "The World",
+];
+const ranks = [
+  "王牌",
+  "二",
+  "三",
+  "四",
+  "五",
+  "六",
+  "七",
+  "八",
+  "九",
+  "十",
+  "侍从",
+  "骑士",
+  "王后",
+  "国王",
+];
+const rankEnglish = [
+  "Ace",
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
+  "Page",
+  "Knight",
+  "Queen",
+  "King",
+];
+const suits = [
+  ["wands", "权杖"],
+  ["cups", "圣杯"],
+  ["swords", "宝剑"],
+  ["pentacles", "星币"],
+];
+function card(id, name, english, arcana) {
+  return Object.freeze({
+    id,
+    name,
+    english,
+    arcana,
+  });
+}
+export const DECK = Object.freeze([
+  ...majorNames.map((name, i) =>
+    card(`major-${String(i).padStart(2, "0")}`, name, majorEnglish[i], "major"),
+  ),
+  ...suits.flatMap(([suit, label]) =>
+    ranks.map((rank, i) =>
+      card(
+        `${suit}-${String(i + 1).padStart(2, "0")}`,
+        label + rank,
+        `${rankEnglish[i]} of ${suit[0].toUpperCase() + suit.slice(1)}`,
+        "minor",
+      ),
+    ),
+  ),
+]);
+export const CARD_BY_ID = new Map(DECK.map((card) => [card.id, card]));

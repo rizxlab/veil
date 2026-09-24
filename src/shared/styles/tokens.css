@@ -1,0 +1,24 @@
+:root {
+  --paper: #fff;
+  --ink: #292530;
+  --muted: #746a7e;
+  --line: #dcd4e2;
+  --purple: #665078;
+  --purple-dark: #503c61;
+  --header-bg: #302936;
+  --header-ink: #f7f2f8;
+  --header-muted: #d8cedd;
+  --lavender: #f4f0f7;
+  --gold: #9b7948;
+  --sage: #52715f;
+  --sage-soft: #e7efe9;
+  --card-edge: #b4a2bf;
+  --card-shadow: 1px 3px 8px #37264130;
+  --face-shadow: 0 5px 16px #46344e24;
+  --serif: Georgia, "Times New Roman", "Songti SC", "STSong", serif;
+  --sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  --radius: 18px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

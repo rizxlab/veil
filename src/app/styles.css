@@ -1,0 +1,17 @@
+@import "../shared/styles/tokens.css";
+@import "../shared/styles/base.css";
+@import "../shared/styles/confirm-dialog.css";
+@import "../shared/styles/date-time-picker.css";
+@import "../features/home/home.css";
+@import "../features/profile/profile.css";
+@import "../features/tarot/components/card-face.css";
+@import "../features/tarot/components/card-detail.css";
+@import "../features/tarot/components/tarot-settings.css";
+@import "../features/tarot/components/card-drag.css";
+@import "../features/tarot/components/shuffle-animation.css";
+@import "../features/tarot/tarot.css";
+@import "../features/history/history.css";
+@import "../features/knowledge/knowledge.css";
+
+@import "../features/astro-dice/dice.css";
+@import "../features/astro-dice/components/dice-settings.css";

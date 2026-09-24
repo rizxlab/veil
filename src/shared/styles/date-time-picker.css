@@ -1,0 +1,263 @@
+.reading-time {
+  position: relative;
+  width: min(100%, 540px);
+}
+.reading-datetime-trigger {
+  width: 100%;
+  min-height: 82px;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 15%, rgb(180 150 105 / 10%), transparent 40%),
+    linear-gradient(145deg, #fff, #faf7fc);
+  box-shadow: 0 7px 22px rgb(55 40 65 / 6%);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.reading-datetime-trigger:hover,
+.reading-datetime-trigger[aria-expanded="true"] {
+  border-color: rgb(111 82 128 / 55%);
+  box-shadow: 0 9px 28px rgb(55 40 65 / 10%);
+}
+.reading-time-mark {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgb(111 82 128 / 18%);
+  border-radius: 50%;
+  color: var(--gold);
+  background: rgb(245 240 247 / 82%);
+  font: 17px var(--serif);
+}
+.reading-datetime-trigger > span:nth-child(2) {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+.reading-time small {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+}
+.reading-datetime-trigger strong {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+.reading-datetime-trigger strong span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reading-datetime-trigger strong i {
+  flex: 0 0 auto;
+  color: var(--gold);
+  font-style: normal;
+}
+.reading-datetime-trigger em {
+  color: var(--purple);
+  font-size: 8px;
+  font-style: normal;
+  letter-spacing: 0.5px;
+}
+.reading-datetime-popover {
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  width: min(390px, calc(100vw - 42px));
+  max-height: calc(100dvh - 30px);
+  padding: 16px;
+  border: 1px solid rgb(111 82 128 / 24%);
+  border-radius: 16px;
+  color: var(--ink);
+  background: rgb(255 253 255 / 98%);
+  box-shadow: 0 18px 52px rgb(43 32 51 / 18%);
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+  animation: calendar-in 160ms ease both;
+}
+.reading-datetime-popover[hidden] { display: none; }
+.reading-datetime-summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: rgb(246 242 248 / 72%);
+}
+.reading-datetime-summary span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+.reading-datetime-summary strong {
+  overflow: hidden;
+  font: 11px var(--sans);
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.reading-datetime-summary b {
+  flex: 0 0 auto;
+  color: var(--purple);
+  font: 18px var(--serif);
+  font-weight: 500;
+}
+.reading-calendar-heading {
+  display: grid;
+  grid-template-columns: 38px 1fr 38px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.reading-calendar-heading strong {
+  font: 15px var(--serif);
+  text-align: center;
+}
+.reading-calendar-heading button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--purple);
+  background: var(--lavender);
+  font: 22px var(--serif);
+}
+.reading-calendar-week,
+.reading-calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.reading-calendar-week span {
+  padding: 6px 0;
+  color: var(--muted);
+  font-size: 8px;
+  text-align: center;
+}
+.reading-calendar-days button {
+  min-width: 38px;
+  min-height: 38px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--ink);
+  background: transparent;
+  font: 11px var(--sans);
+}
+.reading-calendar-days button:hover {
+  border-color: var(--line);
+  background: var(--lavender);
+}
+.reading-calendar-days .is-outside { color: rgb(127 117 132 / 42%); }
+.reading-calendar-days .is-today { border-color: rgb(180 150 105 / 55%); }
+.reading-calendar-days .is-selected {
+  border-color: var(--purple);
+  color: white;
+  background: var(--purple);
+}
+.reading-datetime-footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 13px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+}
+.reading-clock-fields {
+  display: flex;
+  align-items: end;
+  gap: 5px;
+}
+.reading-clock-fields label {
+  display: grid;
+  gap: 3px;
+}
+.reading-clock-fields label span {
+  color: var(--muted);
+  font-size: 8px;
+  text-align: center;
+}
+.reading-clock-fields select {
+  width: 58px;
+  height: 44px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--ink);
+  background: rgb(255 255 255 / 92%);
+  font: 16px var(--serif);
+  text-align: center;
+  cursor: pointer;
+}
+.reading-clock-fields i {
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font: 17px var(--serif);
+  font-style: normal;
+}
+.reading-datetime-actions {
+  display: flex;
+  gap: 7px;
+}
+.reading-now,
+.reading-datetime-done {
+  min-width: 58px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--purple);
+  background: white;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+.reading-datetime-done {
+  border-color: var(--purple);
+  color: white;
+  background: var(--purple);
+}
+@keyframes calendar-in {
+  from { opacity: 0; transform: translate(-50%, calc(-50% - 5px)); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+@media (max-width: 600px) {
+  .reading-datetime-trigger { min-height: 76px; }
+  .reading-datetime-popover {
+    width: min(360px, calc(100vw - 30px));
+    padding: 13px 11px;
+  }
+  .reading-calendar-days button {
+    min-width: 36px;
+    min-height: 40px;
+  }
+  .reading-datetime-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .reading-clock-fields,
+  .reading-datetime-actions {
+    justify-content: center;
+  }
+  .reading-datetime-actions button { flex: 1; }
+}

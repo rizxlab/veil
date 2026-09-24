@@ -1,0 +1,191 @@
+.card-detail {
+  width: min(880px, calc(100vw - 40px));
+  max-width: none;
+  max-height: min(760px, calc(100dvh - 40px));
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  color: var(--ink);
+  background: transparent;
+  overflow: visible;
+}
+.card-detail:focus {
+  outline: none;
+}
+.card-detail::backdrop {
+  background: rgb(25 20 31 / 68%);
+  backdrop-filter: blur(3px);
+}
+.card-detail-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(210px, 0.78fr) minmax(320px, 1.22fr);
+  gap: clamp(36px, 6vw, 72px);
+  max-height: min(760px, calc(100dvh - 40px));
+  padding: clamp(32px, 5vw, 64px);
+  border: 1px solid rgb(255 255 255 / 72%);
+  border-radius: 22px;
+  background: rgb(255 255 255 / 90%);
+  box-shadow: 0 24px 80px rgb(20 14 27 / 32%);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.card-detail-close {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--purple);
+  background: rgb(255 255 255 / 75%);
+  cursor: pointer;
+}
+.card-detail-close svg {
+  width: 18px;
+  height: 18px;
+}
+.card-detail-close:hover {
+  background: var(--lavender);
+}
+.card-detail-visual {
+  align-self: start;
+  position: sticky;
+  top: 0;
+}
+.card-detail-index,
+.card-detail-arcana,
+.card-detail-english,
+.card-meaning span {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.card-detail-index {
+  display: block;
+  margin-bottom: 14px;
+}
+.card-detail-image {
+  aspect-ratio: 7 / 12;
+  border: 6px solid #f4eede;
+  border-radius: 9px;
+  background: #f8f1dd;
+  box-shadow: var(--face-shadow);
+  overflow: hidden;
+}
+.card-detail-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.card-detail-copy {
+  min-width: 0;
+  padding: 12px 0 4px;
+}
+.card-detail-copy h2 {
+  margin-top: 12px;
+  font: 400 clamp(28px, 4vw, 40px) var(--serif);
+  letter-spacing: 3px;
+}
+.card-detail-english {
+  margin-top: 8px;
+  color: var(--gold);
+}
+.card-detail-overview {
+  margin-top: 28px;
+  color: #514a58;
+  font-size: 13px;
+  line-height: 2;
+}
+.card-meaning {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 20px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.card-meaning h3 {
+  margin-top: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+.card-meaning p {
+  color: #514a58;
+  font-size: 12px;
+  line-height: 1.95;
+}
+.card-meaning-upright h3 {
+  color: var(--sage);
+}
+.card-meaning-reversed h3 {
+  color: var(--purple);
+}
+.card-detail-note {
+  margin-top: 34px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+@media (max-width: 650px) {
+  .card-detail {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 24px);
+    border-radius: 18px;
+  }
+  .card-detail-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    max-height: calc(100dvh - 24px);
+    padding: 48px 22px 32px;
+    border-radius: 18px;
+  }
+  .card-detail-close {
+    position: sticky;
+    justify-self: end;
+    top: 0;
+    margin: -34px -8px -26px 0;
+  }
+  .card-detail-visual {
+    position: static;
+    width: 122px;
+    padding-top: 0;
+    justify-self: center;
+  }
+  .card-detail-copy {
+    padding-top: 0;
+    text-align: center;
+  }
+  .card-detail-copy h2 {
+    margin-top: 8px;
+    font-size: 25px;
+    letter-spacing: 2px;
+  }
+  .card-detail-overview {
+    margin-top: 20px;
+    text-align: left;
+  }
+  .card-meaning {
+    grid-template-columns: 68px 1fr;
+    gap: 14px;
+    margin-top: 24px;
+    text-align: left;
+  }
+  .card-detail-note {
+    text-align: left;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card-detail[open] .card-detail-panel {
+    animation: card-detail-enter 220ms var(--ease) both;
+  }
+  @keyframes card-detail-enter {
+    from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  }
+}
