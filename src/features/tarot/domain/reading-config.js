@@ -1,3 +1,4 @@
+import { sitePath } from "../../../shared/lib/site-path.js";
 import { TAROT_SKINS } from "../data/skins.js";
 
 export const DEFAULT_READING_TITLE = "随心抽牌";
@@ -13,7 +14,7 @@ export const TABLECLOTHS = Object.freeze([
     id: "celestial",
     name: "星轨薄暮",
     color: "#eee9f0",
-    pattern: "/assets/tablecloths/celestial-veil.svg",
+    pattern: sitePath("assets/tablecloths/celestial-veil.svg"),
   },
 ]);
 

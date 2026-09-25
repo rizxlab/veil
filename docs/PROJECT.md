@@ -24,7 +24,7 @@ Veil 是模拟塔罗、星骰与神谕卡的 PWA。视觉为白色基底、沉�
 1. 用户提需求，先整理，得到确认再编码。
 2. 唯一本地预览地址 **http://localhost:5106/**。不换端口、不自动回退到其他地址；只有用户明确要求才可修改。
 3. 可维护性优先，不为了交付速度混放代码。每个功能、资源、数据各有明确位置。
-4. 当前不接外部服务器、数据库、账号或统计，不发布到外网。
+4. 业务数据不接外部数据库、账号或统计；已授权配置 GitHub Pages 静态部署，实际提交推送及仓库设置仍由用户操作。
 5. 新功能先确定边界和所属模块，再实现；不预先引入不必要的框架、服务或抽象。
 
 ## 3. 技术结构与理由
@@ -380,3 +380,16 @@ npm run build
 - 当前目录未初始化 Git。暂存范围在隔离的临时 Git 索引中验证，用户可按 `docs/GITHUB.md` 初始化并推送。
 - 验证：Node.js 24.19.0 下 37 项测试通过；构建检查 156 张牌面、生成 236 项离线资源。在临时 Git 索引中检查 255 个待提交文件（约 16 MB），无暂存空白错误；仅导出待提交内容的干净目录也通过全部测试与构建。
 - 工作流 YAML 语法检查通过，常见私钥/API token 模式扫描未发现匹配。未运行 GitHub 远程 CI；Node.js 22 的矩阵结果需首次推送后确认。本次未更改 UI，无新增界面验收需求。
+
+
+## 2026-09-25 · GitHub Pages 与部署路径
+
+- 保留原 CI，新增 `.github/workflows/pages.yml`：main push/手动触发，独立执行完整测试、检查与构建，上传 dist 后由 github-pages 环境部署。构建仅 pages:read，部署使用 pages:write/id-token:write，不自动开启 Pages。
+- `scripts/base-path.mjs` 校验构建输入 `VEIL_BASE_PATH`（默认 `/`）；workflow 取 configure-pages 的 base_path，可自动适配 `/veil/` 与自定义域名的 `/`。
+- `src/shared/lib/site-path.js` 根据模块部署位置解析运行时根目录；首页、骰子、牌面预览和桌布统一调用。HTML/CSS 使用相对资源引用，hash 路由不变。
+- 源 manifest 使用相对路径；dist manifest 明确生成 id/start_url/scope/图标路径。precache 包含 base path，缓存版本包含 base path；SW 从自身 URL 推导目录，限定拦截范围并按路径隔离缓存。新缓存完整成功后激活，失败保留旧缓存。
+- 构建部署版本时，开发 public 缓存仍生成根路径版本，避免破坏 localhost。生产预览自动读取 dist manifest 的 scope，仍仅监听 localhost:5106；完成子路径验收后恢复根路径构建。
+- 新增路径、完整构建资源解析与 Service Worker 生命周期测试，不改变业务数据和原有测试。操作手册见 `docs/PAGES.md`。
+- 验证结果：43 项测试全部通过；`npm run check`、根路径/子路径构建、workflow YAML 语法和 `git diff --check` 通过。156 张牌面、237 项离线资源完整。
+- Playwright 在 `/veil/` 和 `/` 分别验证手机抽牌、牌面加载、离线刷新、星骰、历史以及桌面首页，均无 pageerror 或 HTTP 资源错误；确认 SW scope 与缓存按路径隔离。恢复根路径构建及原有 localhost:5106 生产预览。
+- 未执行 Git commit、push、实际部署或修改仓库设置；真实 Pages、HTTPS、自定义域名及系统级 PWA 安装需要推送后验收。

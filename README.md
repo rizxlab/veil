@@ -51,10 +51,11 @@ docs/                 项目总文档、资源与 GitHub 提交说明
 - [项目总文档](docs/PROJECT.md)
 - [开发约定](AGENTS.md)
 - [资源来源与许可说明](docs/ASSETS.md)
-- [首次推送 GitHub](docs/GITHUB.md)
+- [GitHub 仓库操作](docs/GITHUB.md)
+- [Pages 部署与 PWA](docs/PAGES.md)
 
 ## GitHub 与资源许可
 
-GitHub Actions 对推送和 PR 执行 Node.js 22、24 的测试与构建；不部署网站。当前路径按站点根目录设计，不能直接把构建放到 GitHub Pages 的仓库子路径使用。
+现有 CI 对推送和 PR 执行 Node.js 22、24 的测试与构建。独立的 Pages workflow 在 `main` 推送后测试、构建并部署；base path 从 Pages 配置自动读取，支持项目子路径和独立域名根路径。首次启用及自定义域名步骤见 [Pages 部署说明](docs/PAGES.md)。
 
 牌面等第三方资源的来源与许可保留在资源目录，并在资源文档中汇总。项目自身代码尚未指定开源许可证；第三方资源许可不代表整个项目采用同一许可。

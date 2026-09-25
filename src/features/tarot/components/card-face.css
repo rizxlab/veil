@@ -45,7 +45,7 @@
 .card-reveal-back {
   position: absolute;
   inset: 0;
-  background: url("/assets/tarot/back.svg") center/100% 100%;
+  background: url("../../../../assets/tarot/back.svg") center/100% 100%;
   backface-visibility: hidden;
   transform: rotateY(180deg);
   border-radius: 7px;

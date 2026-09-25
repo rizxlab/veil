@@ -257,7 +257,7 @@
   transform: rotate(var(--angle)) translateX(var(--lift));
   border: 1px solid var(--card-edge);
   border-radius: 5px;
-  background: url("/assets/tarot/back.svg") center / 100% 100%;
+  background: url("../../../assets/tarot/back.svg") center / 100% 100%;
   box-shadow: var(--card-shadow);
   cursor: pointer;
 }

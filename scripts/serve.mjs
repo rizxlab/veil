@@ -3,6 +3,9 @@ import { readFile, stat } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
 const production = process.argv.includes("--production");
 const root = resolve(production ? "dist" : ".");
+const base = production
+  ? JSON.parse(await readFile("dist/manifest.webmanifest", "utf8")).scope
+  : "/";
 const mime = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -15,9 +18,20 @@ const mime = {
 };
 const server = http.createServer(async (req, res) => {
   try {
-    const pathname = decodeURIComponent(
+    let pathname = decodeURIComponent(
       new URL(req.url, "http://localhost:5106").pathname,
     );
+    if (base !== "/" && pathname === base.slice(0, -1)) {
+      res.writeHead(308, { Location: base });
+      res.end();
+      return;
+    }
+    if (!pathname.startsWith(base)) {
+      res.writeHead(404);
+      res.end("Not found");
+      return;
+    }
+    pathname = "/" + pathname.slice(base.length);
     const publicFile =
       pathname.startsWith("/assets/") ||
       ["/manifest.webmanifest", "/sw.js", "/precache.json"].includes(pathname);
@@ -60,6 +74,6 @@ server.on("error", (error) => {
 });
 server.listen(5106, "localhost", () =>
   console.log(
-    `Veil ${production ? "production" : "development"} · http://localhost:5106/`,
+    `Veil ${production ? "production" : "development"} · http://localhost:5106${base}`,
   ),
 );

@@ -27,7 +27,8 @@ export async function check() {
   const manifest = JSON.parse(
     await readFile("public/manifest.webmanifest", "utf8"),
   );
-  for (const icon of manifest.icons) await access("public" + icon.src);
+  for (const icon of manifest.icons)
+    await access("public/" + icon.src.replace(/^\.?\//, ""));
   if (DECK.length !== 78 || new Set(DECK.map((c) => c.id)).size !== 78)
     throw new Error("Deck must have 78 unique cards");
   console.log(

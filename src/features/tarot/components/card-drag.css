@@ -11,7 +11,7 @@
   pointer-events: none;
   border: 1px solid var(--card-edge);
   border-radius: 5px;
-  background: url("/assets/tarot/back.svg") center / 100% 100%;
+  background: url("../../../../assets/tarot/back.svg") center / 100% 100%;
   box-shadow: 0 9px 24px #39284825;
   transform-origin: center;
   will-change: left, top, transform;

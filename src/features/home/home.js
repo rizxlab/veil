@@ -1,3 +1,4 @@
+import { sitePath } from "../../shared/lib/site-path.js";
 import { icon } from "../../shared/ui/icons.js";
 export function renderHome() {
   return /* HTML */ `<main id="main" class="home page-enter" tabindex="-1">
@@ -8,7 +9,7 @@ export function renderHome() {
       <a class="portal portal-tarot" href="#/tarot"
         ><div class="portal-art">
           <img
-            src="/assets/illustrations/tarot.svg"
+            src="${sitePath("assets/illustrations/tarot.svg")}"
             alt="雾紫色塔罗牌与星轨"
             width="360"
             height="250"
@@ -23,7 +24,7 @@ export function renderHome() {
       ><a class="portal portal-dice" href="#/astro-dice"
         ><div class="portal-art">
           <img
-            src="/assets/illustrations/dice.svg"
+            src="${sitePath("assets/illustrations/dice.svg")}"
             alt="三枚浅绿色星骰"
             width="360"
             height="250"
@@ -38,7 +39,7 @@ export function renderHome() {
       ><a class="portal portal-oracle" href="#/oracle"
         ><div class="portal-art">
           <img
-            src="/assets/illustrations/oracle.svg"
+            src="${sitePath("assets/illustrations/oracle.svg")}"
             alt="暖金色神谕卡与日月"
             width="360"
             height="250"

@@ -1,6 +1,6 @@
 # GitHub 首次提交
 
-本文件针对代码托管，不包含网站部署。当前阶段不用 GitHub Pages、不配置服务器，预览地址固定为 http://localhost:5106/。
+仓库已完成首次推送：`rizxlab/veil`，分支 `main`。本文件保留首次提交步骤供参考；已存在的仓库不要再次初始化。网站部署现已提供独立 workflow，见 [Pages 部署说明](PAGES.md)。预览地址固定为 http://localhost:5106/。
 
 ## 提交内容
 
@@ -49,6 +49,6 @@ git push -u origin main
 - 本地记录位于浏览器存储，不在源码目录；不要手动把个人数据导出文件加入仓库。
 - `.gitignore` 不会移除以前已被跟踪的文件；未来调整忽略规则后仍应核对暂存内容。
 - 源码尚未指定项目级开源许可证；不擅自将第三方牌面许可套用到项目代码。
-- 路由使用 hash，但资源和 Service Worker 使用根路径；如未来启用 GitHub Pages 子路径部署，需要单独设计、确认并验证。
+- 路由使用 hash；部署资源与 Service Worker 已适配可配置 base path，具体说明见 `PAGES.md`。
 
 工作流依据：[GitHub Node.js 测试文档](https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs)、[checkout](https://github.com/actions/checkout)、[setup-node](https://github.com/actions/setup-node)。
