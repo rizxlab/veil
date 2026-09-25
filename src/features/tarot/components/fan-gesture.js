@@ -11,7 +11,7 @@ export function mountRotationGesture(
   let velocity = 0,
     frame = 0,
     moved = false,
-    resetTimer;
+    threshold = 6;
   function tick() {
     velocity *= 0.92;
     onDelta(velocity);
@@ -20,9 +20,9 @@ export function mountRotationGesture(
   function down(event) {
     if (event.button !== 0 || pointer !== null || !canStart()) return;
     cancelAnimationFrame(frame);
-    clearTimeout(resetTimer);
     pointer = event.pointerId;
     moved = false;
+    threshold = event.pointerType === "touch" ? 10 : 6;
     lastX = event.clientX;
     lastY = event.clientY;
     lastTime = performance.now();
@@ -32,7 +32,7 @@ export function mountRotationGesture(
     if (event.pointerId !== pointer) return;
     const dy = event.clientY - lastY,
       dx = event.clientX - lastX;
-    if (!moved && Math.abs(dy) + Math.abs(dx) < 6) return;
+    if (!moved && Math.hypot(dx, dy) < threshold) return;
     if (!moved) {
       moved = true;
       root.setPointerCapture(pointer);
@@ -51,7 +51,7 @@ export function mountRotationGesture(
     pointer = null;
     if (event.type !== "pointercancel" && moved && !reduced)
       frame = requestAnimationFrame(tick);
-    resetTimer = setTimeout(() => (moved = false), 0);
+    // Keep suppression through delayed touch clicks; the next pointerdown resets it.
   }
   function wheel(event) {
     event.preventDefault();
@@ -77,7 +77,6 @@ export function mountRotationGesture(
     },
     destroy() {
       cancelAnimationFrame(frame);
-      clearTimeout(resetTimer);
       root.removeEventListener("pointerdown", down);
       root.removeEventListener("pointermove", move);
       window.removeEventListener("pointerup", up);

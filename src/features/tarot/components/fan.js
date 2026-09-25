@@ -29,11 +29,7 @@ export function mountFan(
       }
       select(i);
     });
-    button.addEventListener("focus", () => {
-      if (gesture.isPointerDown || drag.active) return;
-      offset = clamp(-i * step);
-      paint();
-    });
+    // Touch focus may arrive after pointerup. Only key() may reposition focus.
     fan.append(button);
     return button;
   });
