@@ -1,3 +1,9 @@
+/* Allow ordinary scrolling, but not browser pinch or double-tap zoom.
+   Components such as the tarot fan may further restrict touch-action. */
+html {
+  touch-action: pan-x pan-y;
+}
+
 * {
   box-sizing: border-box;
 }

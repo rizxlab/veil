@@ -1,3 +1,4 @@
+import { installViewportGestures } from "../infrastructure/browser/viewport-gestures.js";
 import { renderDice } from "../features/astro-dice/dice-view.js";
 import { mountDice } from "../features/astro-dice/dice.js";
 import { createDiceService } from "../features/astro-dice/domain/dice-service.js";
@@ -88,6 +89,7 @@ window.addEventListener("storage", (event) => {
     notify("记录已与当前浏览器的其他页面同步。");
   }
 });
+installViewportGestures();
 render();
 registerOffline();
 registerReadingTool(service);
